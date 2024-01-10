@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Color Changer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <button id="changeColorBtn">Change Color</button>
+      <div id="colorDisplay">Click the button to change my color!</div>
+    </div>
+    <script>
+      document
+        .getElementById("changeColorBtn")
+        .addEventListener("click", function () {
+          const colorDisplay = document.getElementById("colorDisplay");
+          const randomColor =
+            "#" + Math.floor(Math.random() * 16777215).toString(16);
+          colorDisplay.style.backgroundColor = randomColor;
+          colorDisplay.textContent = `The color is now ${randomColor.toUpperCase()}!`;
+        });
+    </script>
+    >
+
+    <style>
+      #app {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      #changeColorBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      #colorDisplay {
+        margin-top: 20px;
+        font-size: 24px;
+        padding: 50px;
+        border: 1px solid #000;
+      }
+    </style>
+  </body>
+</html>
