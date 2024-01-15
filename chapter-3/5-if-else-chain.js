@@ -21,3 +21,25 @@ if(x > 20) { // 0 > 20 -> false
 }else {
     console.log("x is less than 5");
 }
+
+
+/**
+ * chaining is helpful when we want one of the conditions to be true
+ * and we don't want to check the rest of the conditions.
+ */
+var x = 100;
+var y = 20;
+var z = 30;
+
+/**
+ * but separate if statements are helpful when we want to 
+ * check all the conditions
+ */
+if(x > y) {
+    console.log("x is greater than y");
+}
+
+if(x > z) {
+    console.log("x is greater than z");
+}
+
