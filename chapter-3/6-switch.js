@@ -14,6 +14,9 @@ switch (x) {
         break;
     case 100:
         console.log('The value of x is 100');
+        if(4 > 3) {
+            console.log('4 is greater than 3');
+        }
         break;
     default:
         console.log('The value of x is something else');
