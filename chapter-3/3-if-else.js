@@ -10,3 +10,4 @@ if (y > x) // 200 > 100
     console.log('y is greater than x');
 else
     console.log('y is less than x');
+    console.log("This is outside the scope of else block");
