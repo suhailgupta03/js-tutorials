@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekend Adventure Planner</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background: #eef2f7; color: #333; }
+  .container { max-width: 500px; margin: 50px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+  select, .activity-card { padding: 10px; margin-bottom: 20px; width: 100%; border: none; border-radius: 5px; }
+  .activity-card { cursor: pointer; transition: transform 0.2s ease; }
+  .activity-card:hover { transform: scale(1.05); }
+  button { padding: 10px 20px; cursor: pointer; background-color: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px; }
+  button:hover { background-color: #2980b9; }
+  #result { padding: 20px; background-color: #dff9fb; border-radius: 5px; margin-top: 20px; }
+  .sunny { background: #f9ca24; color: #fff; }
+  .rainy { background: #3498db; color: #fff; }
+  .snowy { background: #74b9ff; color: #fff; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Weekend Adventure Planner</h1>
+  <p>What's the weather like?</p>
+  <select id="weatherSelect">
+    <option value="">-- Select Weather --</option>
+    <option value="sunny">Sunny</option>
+    <option value="rainy">Rainy</option>
+    <option value="snowy">Snowy</option>
+  </select>
+  <p>Choose your preferred activity:</p>
+  <div id="activityOptions" class="hidden">
+    <div class="activity-card sunny" onclick="planActivity('hike')">🥾 Go for a hike</div>
+    <div class="activity-card rainy" onclick="planActivity('movie')">🍿 Watch a movie</div>
+    <div class="activity-card snowy" onclick="planActivity('ski')">⛷️ Hit the ski slopes</div>
+  </div>
+  <div id="result"></div>
+</div>
+<script>
+  document.getElementById('weatherSelect').addEventListener('change', function() {
+    document.getElementById('activityOptions').classList.remove('hidden');
+  });
+
+  function planActivity(activity) {
+    const weather = document.getElementById('weatherSelect').value;
+    let message;
+    
+    if (weather === "sunny" && activity === 'hike') {
+      message = '<div class="sunny">Perfect day for a hike! Grab your boots and explore the trails.</div>';
+    } else if (weather === "rainy" && activity === 'movie') {
+      message = '<div class="rainy">Rain is a great excuse to catch up on movies. Don\'t forget the popcorn!</div>';
+    } else if (weather === "snowy" && activity === 'ski') {
+      message = '<div class="snowy">Fresh powder awaits! Enjoy the thrill of skiing down the slopes.</div>';
+    } else {
+      message = 'Hmm, that activity might not be ideal for the current weather. Try something else?';
+    }
+    
+    document.getElementById('result').innerHTML = message;
+  }
+</script>
+</body>
+</html>

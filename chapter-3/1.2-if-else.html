@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reaction Game</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background-color: #34495e; color: #ecf0f1; text-align: center; }
+  .container { max-width: 300px; margin: 100px auto; padding: 20px; }
+  .button { padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #3498db; color: white; border: none; border-radius: 5px; margin: 10px; transition: background-color 0.3s; }
+  .button:hover { background-color: #2980b9; }
+  .button:active { transform: translateY(2px); }
+  .hidden { display: none; }
+  #alarmButton { background-color: #e74c3c; }
+  #message { margin-top: 20px; font-size: 22px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Quick Reaction Game</h1>
+  <button id="startButton" class="button">Start Game</button>
+  <button id="alarmButton" class="button hidden">Click Me!</button>
+  <div id="message"></div>
+</div>
+<script>
+  let timer;
+  const reactionTimeLimit = 3000; // 3 seconds
+
+  document.getElementById('startButton').onclick = function() {
+    this.disabled = true;
+    document.getElementById('message').textContent = 'Get ready...';
+    
+    // Set a random delay for the alarm
+    const delay = Math.random() * 2000 + 1000; // 1-3 seconds
+    timer = setTimeout(triggerAlarm, delay);
+  };
+
+  document.getElementById('alarmButton').onclick = function() {
+    clearTimeout(timer); // Clear the timeout
+    document.getElementById('message').textContent = 'Well done! You made it in time!';
+    this.classList.add('hidden');
+    document.getElementById('startButton').disabled = false;
+  };
+
+  function triggerAlarm() {
+    document.getElementById('alarmButton').classList.remove('hidden');
+    document.getElementById('message').textContent = 'Click the button!';
+    timer = setTimeout(function() {
+      const alarmButton = document.getElementById('alarmButton');
+      if (!alarmButton.classList.contains('hidden')) {
+        document.getElementById('message').textContent = 'Too slow! You lost.';
+        alarmButton.classList.add('hidden');
+        document.getElementById('startButton').disabled = false;
+      }
+    }, reactionTimeLimit);
+  }
+</script>
+</body>
+</html>
