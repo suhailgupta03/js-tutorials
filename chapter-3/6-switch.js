@@ -1,16 +1,15 @@
-var x = 100;
+var x = 1;
 
-switch(x) {
-    case "100": // This is always a strict comparison
-        console.log("x is 100 in string");
+switch (x) {
+    case 1:
+    case 2:
+    case 3:
+        console.log('The value of x is 1,2 or 3');
         break;
-    case 20:
-        console.log("x is 20");
-        break;
-    case 5:
-        console.log("x is 100");
+    case 100:
+        console.log('The value of x is 100');
         break;
     default:
-        console.log("x is not 10, 20 or 30");
+        console.log('The value of x is something else');
         break;
 }
