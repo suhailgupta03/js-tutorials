@@ -1,5 +1,11 @@
 var x = 1;
 
+/**
+ * Cases are evaluated with strict equality (===)
+ * Multiple cases can be clustered together
+ * 
+ * Break is mandatory to prevent other cases from being evaluated
+ */
 switch (x) {
     case 1:
     case 2:
