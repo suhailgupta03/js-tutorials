@@ -4,7 +4,7 @@ var y = -1;
  * Else always comes after if block
  * It cannot come alone or before if block
  */
-if (y > x) { // 200 > 100 --> TRUE
+if (y > x) { // -1 > 100 --> FALSE
     console.log('y is greater than x');
     console.log("INSIDE IF BLOCK");
     console.log("HELLO WORLD!!");
