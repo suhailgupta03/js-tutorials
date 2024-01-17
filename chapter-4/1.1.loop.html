@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop Animation Example</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .circle {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.8;
+            animation: moveRight 10s linear infinite;
+        }
+        @keyframes moveRight {
+            0% { left: -25px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+const container = document.getElementById('container');
+const numberOfCircles = 50;
+
+for (let i = 0; i < numberOfCircles; i++) {
+    // Create circle element
+    const circle = document.createElement('div');
+    circle.classList.add('circle');
+    // Randomize the starting position along the Y-axis
+    circle.style.top = Math.random() * innerHeight + 'px';
+    // Randomize the animation duration to vary the speed of circles
+    circle.style.animationDuration = (5 + Math.random() * 5) + 's';
+    container.appendChild(circle);
+}
+</script>
+
+</body>
+</html>

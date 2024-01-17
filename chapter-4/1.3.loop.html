@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Path Traversal Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #282828;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .path {
+            position: relative;
+            width: 80%;
+            height: 20px;
+            background: #444;
+            margin: 10px 0;
+        }
+        .object {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #e91e63;
+            border-radius: 50%;
+            animation: moveAcross 4s linear forwards;
+        }
+        @keyframes moveAcross {
+            0% { left: 0; }
+            100% { left: calc(100% - 20px); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="path1" class="path"></div>
+<div id="path2" class="path"></div>
+<div id="path3" class="path"></div>
+<!-- Add more paths as needed -->
+
+<script>
+const paths = document.querySelectorAll('.path');
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function traversePaths() {
+    let currentPathIndex = 0;
+
+    while (true) { // Infinite loop
+        for (currentPathIndex = 0; currentPathIndex < paths.length; currentPathIndex++) {
+            const object = document.createElement('div');
+            object.classList.add('object');
+            paths[currentPathIndex].appendChild(object);
+
+            // Wait for the animation to complete before continuing
+            await sleep(4000); // Sync with CSS animation duration
+
+            // Remove the object from the current path
+            paths[currentPathIndex].removeChild(object);
+        }
+    }
+}
+
+traversePaths(); // Start the path traversal
+</script>
+
+</body>
+</html>

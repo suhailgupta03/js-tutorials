@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infinite Text Loop Example</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #282828;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            text-align: center;
+        }
+        #text-container {
+            padding: 20px;
+            border: 1px solid #fff;
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="text-container"></div>
+
+<script>
+const container = document.getElementById('text-container');
+const words = ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog."];
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function typeInfinite() {
+    while (true) { // Infinite loop
+        for (let i = 0; i < words.length; i++) {
+            container.textContent += words[i] + " ";
+            await sleep(500); // Wait before adding the next word
+        }
+        await sleep(1500); // Wait before clearing the text
+        container.textContent = ""; // Clear the text and start over
+    }
+}
+
+typeInfinite(); // Start the infinite typing loop
+</script>
+
+</body>
+</html>

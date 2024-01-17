@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infinite Loop Animation with For Loop</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #009ffd, #2a2a72);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #container {
+            position: relative;
+        }
+        .square {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: floatUp 5s linear forwards;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+const container = document.getElementById('container');
+
+function createSquares() {
+    // Use a for loop to create multiple squares with staggered delays
+    for (let i = 0; i < 10; i++) { // Adjust number of squares as needed
+        setTimeout(function() {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.style.left = Math.random() * innerWidth + 'px';
+            container.appendChild(square);
+
+            // Remove the square after animation ends
+            square.addEventListener('animationend', function() {
+                container.removeChild(square);
+            });
+        }, i * 100); // Stagger the creation of squares
+    }
+}
+
+// Call createSquares every 1 second to maintain the loop effect
+setInterval(createSquares, 1000);
+</script>
+
+</body>
+</html>
