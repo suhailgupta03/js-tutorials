@@ -1,12 +1,11 @@
 var i = 0; // Initialization
 for(;;) {
-    if(i < 3) { // Condition
+    if(i < 3) { // Condition (But not a terminating condition)
         console.log(i);
         console.log("....")
         i++; // Increment
     }else {
         break;
-        // break will stop the loop
     }
 }
 
