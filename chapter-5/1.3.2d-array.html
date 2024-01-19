@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D Array Visualization</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #e9ecef;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: #343a40;
+      }
+
+      .description {
+        color: #6c757d;
+        margin-bottom: 20px;
+      }
+
+      .array-2d {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .row {
+        display: flex;
+        margin-bottom: 5px;
+      }
+
+      .cell {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #ced4da;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 0.75rem;
+        margin-right: 5px;
+        position: relative;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .cell::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #ffc107;
+      }
+
+      .cell::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        background-color: #ffc107;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+      }
+
+      #addRow:hover {
+        background-color: #218838;
+      }
+      #removeRow {
+        background-color: #dc3545;
+        color: white;
+      }
+      #removeRow:hover {
+        background-color: #c82333;
+      }
+      .explanation {
+        font-size: 1rem;
+        color: #343a40;
+        margin-top: 10px;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>2D Arrays in JavaScript</h1>
+      <p class="description">
+        A 2D array is like a grid with rows and columns. Let's visualize adding
+        and removing rows.
+      </p>
+      <div class="array-2d">
+        <!-- 2D array visualization will be generated here -->
+      </div>
+      <div class="controls">
+        <button id="addRow">Add Row</button>
+        <button id="removeRow">Remove Row</button>
+      </div>
+      <div class="explanation"></div>
+    </div>
+
+    <script>
+      const array2D = document.querySelector(".array-2d");
+      const explanation = document.querySelector(".explanation");
+      let rowCount = 0;
+      let colCount = 3; // Fixed number of columns for simplicity
+
+      function updateExplanation(text) {
+        explanation.textContent = text;
+      }
+
+      document.getElementById("addRow").addEventListener("click", () => {
+        const newRow = document.createElement("div");
+        newRow.className = "row";
+        for (let i = 0; i < colCount; i++) {
+          const newCell = document.createElement("div");
+          newCell.className = "cell";
+          newCell.textContent = `${rowCount},${i}`;
+          newRow.appendChild(newCell);
+        }
+        array2D.appendChild(newRow);
+        rowCount++;
+        updateExplanation(`Added row ${rowCount - 1}.`);
+      });
+
+      document.getElementById("removeRow").addEventListener("click", () => {
+        if (rowCount > 0) {
+          array2D.lastChild.remove();
+          rowCount--;
+          updateExplanation(`Removed row ${rowCount}.`);
+        }
+      });
+    </script>
+  </body>
+</html>
