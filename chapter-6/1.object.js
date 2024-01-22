@@ -19,3 +19,6 @@ var employee = {
 console.log(employee.designation);
 console.log(employee.age);
 console.log(employee.address.country);
+console.log(employee["designation"]);
+console.log(employee["age"]);
+console.log(employee["address"]["country"]);
