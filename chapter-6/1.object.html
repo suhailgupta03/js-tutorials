@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Object Animation</title>
+<style>
+  body { margin: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #eaeaea; }
+  .object-syntax { font-family: monospace; margin-bottom: 20px; }
+  .key-value-pair { font-family: monospace; color: #333; }
+  .addition { color: green; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeIn 1s ease-in-out forwards; }
+</style>
+</head>
+<body>
+<div class="object-syntax" id="objectSyntax">const obj = {};</div>
+<div class="key-value-pair" id="keyValuePair"></div>
+
+<script>
+  const obj = {};
+  const objectSyntaxDiv = document.getElementById('objectSyntax');
+  const keyValuePairDiv = document.getElementById('keyValuePair');
+
+  function updateObjectSyntax() {
+    objectSyntaxDiv.textContent = `const obj = ${JSON.stringify(obj, null, 2)};`;
+  }
+
+  function addKeyValuePair(key, value) {
+    obj[key] = value;
+    const additionDiv = document.createElement('div');
+    additionDiv.classList.add('addition', 'fade-in');
+    additionDiv.textContent = `obj["${key}"] = "${value}";`;
+    keyValuePairDiv.appendChild(additionDiv);
+    updateObjectSyntax();
+  }
+
+  // Initial object syntax
+  updateObjectSyntax();
+
+  // Animate addition of new key-value pairs
+  setTimeout(() => addKeyValuePair('name', 'Alice'), 1000);
+  setTimeout(() => addKeyValuePair('age', 30), 2000);
+  setTimeout(() => addKeyValuePair('isActive', true), 3000);
+</script>
+</body>
+</html>
