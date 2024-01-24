@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator with Function Illustration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+  }
+  .calculator {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .display {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+  }
+  .function-display {
+    font-size: 0.8em;
+    color: #888;
+    min-height: 1.2em;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .button {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  .button:hover {
+    background-color: #d7d7d7;
+  }
+  .animation-display {
+    margin-left: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    min-height: 150px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+  .highlight {
+    background-color: yellow;
+    transition: background-color 1s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <div class="display" id="inputDisplay">0</div>
+  <div class="function-display" id="functionDisplay"></div>
+  <div class="buttons">
+    <button class="button" onclick="inputDigit('7')">7</button>
+    <button class="button" onclick="inputDigit('8')">8</button>
+    <button class="button" onclick="inputDigit('9')">9</button>
+    <button class="button" onclick="setOperation(add)">+</button>
+    <button class="button" onclick="inputDigit('4')">4</button>
+    <button class="button" onclick="inputDigit('5')">5</button>
+    <button class="button" onclick="inputDigit('6')">6</button>
+    <button class="button" onclick="setOperation(subtract)">-</button>
+    <button class="button" onclick="inputDigit('1')">1</button>
+    <button class="button" onclick="inputDigit('2')">2</button>
+    <button class="button" onclick="inputDigit('3')">3</button>
+    <button class="button" onclick="setOperation(multiply)">*</button>
+    <button class="button" onclick="inputDigit('0')">0</button>
+    <button class="button" onclick="calculateResult()">=</button>
+    <button class="button" onclick="clearInput()">C</button>
+    <button class="button" onclick="setOperation(divide)">/</button>
+  </div>
+</div>
+
+<script>
+  let currentInput = '';
+  let currentOperation = null;
+  let previousInput = '';
+
+  function inputDigit(digit) {
+    currentInput += digit;
+    updateDisplay();
+  }
+
+  function setOperation(operation) {
+    if (currentInput) {
+      previousInput = currentInput;
+      currentInput = '';
+    }
+    currentOperation = operation;
+    updateFunctionDisplay(`function ${operation.name}(a, b)`);
+    updateDisplay();
+  }
+
+  function add(a, b) { return a + b; }
+  function subtract(a, b) { return a - b; }
+  function multiply(a, b) { return a * b; }
+  function divide(a, b) { return b !== 0 ? a / b : 'Error'; }
+
+  function calculateResult() {
+    if (previousInput && currentInput && currentOperation) {
+      const result = currentOperation(parseFloat(previousInput), parseFloat(currentInput));
+      currentInput = result.toString();
+      previousInput = '';
+      currentOperation = null;
+      updateFunctionDisplay('');
+    }
+    updateDisplay();
+  }
+
+  function clearInput() {
+    currentInput = '';
+    previousInput = '';
+    currentOperation = null;
+    updateDisplay();
+    updateFunctionDisplay('');
+  }
+
+  function updateDisplay() {
+    const inputDisplay = document.getElementById('inputDisplay');
+    inputDisplay.textContent = currentInput || '0';
+  }
+
+  function updateFunctionDisplay(text) {
+    const functionDisplay = document.getElementById('functionDisplay');
+    functionDisplay.textContent = text;
+  }
+</script>
+
+</body>
+</html>
