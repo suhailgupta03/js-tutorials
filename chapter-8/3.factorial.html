@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factorial Call Stack Visualization</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+  #callStackContainer {
+    border: 3px solid #333;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  .stackFrame {
+    border-bottom: 1px solid #666;
+    padding: 10px;
+    background-color: #673AB7;
+    color: white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: all 0.5s ease-in-out;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  #controlButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3F51B5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  #resultContainer {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: #EDE7F6;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  pre {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 20px;
+    overflow: auto;
+  }
+</style>
+</head>
+<body>
+
+<div id="callStackContainer"></div>
+<button id="controlButton">Next Call</button>
+<div id="resultContainer">Result: </div>
+<pre id="jsCode">
+function factorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+// Initial call
+// console.log(factorial(5));
+</pre>
+
+<script>
+  const stackContainer = document.getElementById('callStackContainer');
+  const resultContainer = document.getElementById('resultContainer');
+  const controlButton = document.getElementById('controlButton');
+  let currentLevel = 5;
+  let result = 1;
+
+  function addStackFrame(n) {
+    const frame = document.createElement('div');
+    frame.classList.add('stackFrame');
+    frame.textContent = `factorial(${n})`;
+    frame.style.bottom = `${(5 - n) * 40}px`; // Offset each frame
+    stackContainer.appendChild(frame);
+  }
+
+  function removeStackFrame() {
+    if (stackContainer.children.length > 0) {
+      const frameValue = parseInt(stackContainer.lastElementChild.textContent.match(/\d+/)[0], 10);
+      result *= frameValue;
+      resultContainer.textContent = `Result: ${result}`;
+      stackContainer.removeChild(stackContainer.lastElementChild);
+    }
+  }
+
+  controlButton.addEventListener('click', () => {
+    if (currentLevel > 0) {
+      addStackFrame(currentLevel);
+      currentLevel--;
+    } else if (stackContainer.children.length > 0) {
+      removeStackFrame();
+    }
+  });
+
+  function factorial(n) {
+    if (n === 0 || n === 1) {
+  return 1;
+}
+return n * factorial(n - 1);
+}
+</script>
+</body>
+</html>

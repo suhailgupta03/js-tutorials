@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call Stack Visualization</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+  #callStackContainer {
+    border: 3px solid #333;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  .stackFrame {
+    border-bottom: 1px solid #666;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: all 0.5s ease-in-out;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  #controlButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  pre {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 20px;
+    overflow: auto;
+  }
+</style>
+</head>
+<body>
+
+<div id="callStackContainer"></div>
+<button id="controlButton">Next Call</button>
+<pre id="jsCode">
+function getTemperature() {
+  return 4;
+}
+
+function getDayOfTheWeek() {
+  return "Thursday";
+}
+
+function getTimeOfTheDay() {
+  return "2:00 PM";
+}
+
+function greet() {
+  const t = getTemperature();
+  const day = getDayOfTheWeek();
+  const time = getTimeOfTheDay();
+}
+
+greet();
+</pre>
+
+<script>
+  const stackContainer = document.getElementById('callStackContainer');
+  const controlButton = document.getElementById('controlButton');
+  let currentStep = 0;
+  const functionCalls = ['greet', 'getTemperature', 'getDayOfTheWeek', 'getTimeOfTheDay'];
+
+  function addStackFrame(funcName) {
+    const frame = document.createElement('div');
+    frame.classList.add('stackFrame');
+    frame.textContent = `${funcName}()`;
+    frame.style.bottom = '0px'; // Start at the bottom of the stack
+    stackContainer.appendChild(frame);
+    // Adjust positions of other frames
+    Array.from(stackContainer.children).forEach((child, index) => {
+      child.style.bottom = `${index * 50}px`;
+    });
+  }
+
+  function removeStackFrame() {
+    if (stackContainer.children.length > 1) { // Keep greet() until the end
+      stackContainer.removeChild(stackContainer.lastElementChild);
+      // Adjust positions of other frames
+      Array.from(stackContainer.children).forEach((child, index) => {
+        child.style.bottom = `${index * 50}px`;
+      });
+    } else {
+      // When only greet() is left, remove it as well
+      stackContainer.removeChild(stackContainer.lastElementChild);
+      controlButton.disabled = true; // Disable the button at the end of the sequence
+    }
+  }
+
+  controlButton.addEventListener('click', () => {
+    if (currentStep < functionCalls.length) {
+      addStackFrame(functionCalls[currentStep]);
+      if (currentStep > 0) {
+        setTimeout(removeStackFrame, 2000); // Remove the last function after some time
+      }
+      currentStep++;
+    } else {
+      setTimeout(removeStackFrame, 2000); // Finally, remove greet()
+    }
+  });
+
+  function getTemperature() { return 4; }
+  function getDayOfTheWeek() { return "Thursday"; }
+  function getTimeOfTheDay() { return "2:00 PM"; }
+  function greet() {
+    addStackFrame('getTemperature');
+    const t = getTemperature();
+    setTimeout(() => {
+      removeStackFrame();
+      addStackFrame('getDayOfTheWeek');
+      const day = getDayOfTheWeek();
+      setTimeout(() => {
+        removeStackFrame();
+        addStackFrame('getTimeOfTheDay');
+        const time = getTimeOfTheDay();
+        setTimeout(() => {
+          removeStackFrame(); // Remove getTimeOfTheDay and then greet
+          removeStackFrame();
+        }, 2000);
+      }, 2000);
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
