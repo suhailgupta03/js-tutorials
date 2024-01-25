@@ -1,4 +1,4 @@
-function greet(level = 9) {
+function greet(level) {
     if (level >= 10) {
       return; // Stop recursion after 10 levels
     }
