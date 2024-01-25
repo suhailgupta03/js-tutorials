@@ -18,3 +18,19 @@ const pd = (function() {
     return list;
 })()
 console.log(pd);
+
+const multipleOfThree = (function() {
+    let list = [];
+    for(let i = 0; i < 10; i++) {
+        if(i % 3 === 0) {
+            list.push(i);
+        }
+    }
+    return list;
+})()
+
+console.log(multipleOfThree);
+
+(function(a, b, c) {
+    console.log(a, b, c);
+})(1, 2, 3)
