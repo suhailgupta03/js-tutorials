@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disco Light App</title>
+<style>
+  #discoLight {
+    width: 100vw;
+    height: 100vh;
+    transition: background-color 0.5s;
+  }
+</style>
+</head>
+<body>
+
+<div id="discoLight"></div>
+
+<script>
+  const discoLight = document.getElementById('discoLight');
+  const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink'];
+
+  setInterval(() => {
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    discoLight.style.backgroundColor = colors[randomColorIndex];
+  }, 500);
+</script>
+
+</body>
+</html>
