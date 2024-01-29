@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Loop Animation</title>
+<style>
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    min-height: 200px;
+  }
+  .column {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  .block {
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #ddf;
+    border: 1px solid #00f;
+    border-radius: 3px;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h2>Event Loop Demonstration</h2>
+<div class="container">
+  <div id="callStack" class="column">
+    <h3>Call Stack</h3>
+  </div>
+  <div id="webAPIs" class="column">
+    <h3>Web APIs</h3>
+  </div>
+  <div id="taskQueue" class="column">
+    <h3>Task Queue</h3>
+    <p>
+        The Task Queue holds callbacks from asynchronous operations that are ready to be executed. When the call stack is empty, the event loop checks the Task Queue. If there are any pending callbacks, the event loop moves them one by one onto the call stack for execution. This ensures that JavaScript's single-threaded call stack can run code, handle events, and execute queued tasks in an orderly manner.
+      </p>
+  </div>
+</div>
+
+<div>
+    <h1>How setTimeout Moves to the Queue</h1>
+<p>
+  The <code>setTimeout</code> function is part of the Web APIs provided by the browser, which allows JavaScript to perform tasks asynchronously. Here's the process of how <code>setTimeout</code> moves to the queue:
+</p>
+<ol>
+  <li><strong>Registration:</strong> When <code>setTimeout</code> is called, the JavaScript engine registers the callback function and the delay with the browser's Web APIs.</li>
+  <li><strong>Continuation:</strong> The JavaScript engine continues executing other code on the call stack, which allows for non-blocking execution.</li>
+  <li><strong>Timer Handling:</strong> The Web API starts the timer and waits for it to expire. During this time, the JavaScript engine can execute other tasks as it is not blocked by the timer.</li>
+  <li><strong>Queueing:</strong> Once the timer expires, the Web API places the <code>setTimeout</code> callback into the Task Queue.</li>
+  <li><strong>Event Loop Check:</strong> The Event Loop continually checks the Call Stack; if it's empty, it takes the callback from the Task Queue and pushes it onto the Call Stack.</li>
+  <li><strong>Callback Execution:</strong> Finally, the JavaScript engine executes the callback function that was associated with the <code>setTimeout</code>.</li>
+</ol>
+<p>
+  It's important to note that the callback may not run exactly after the specified delay if the Call Stack is not empty when the timer expires. The callback must wait until the Call Stack is clear.
+</p>
+</div>
+
+<script>
+  function addBlock(elementId, text) {
+    const element = document.getElementById(elementId);
+    const block = document.createElement('div');
+    block.className = 'block';
+    block.textContent = text;
+    element.appendChild(block);
+    return block;
+  }
+
+  function moveBlock(block, fromElementId, toElementId) {
+    const fromElement = document.getElementById(fromElementId);
+    const toElement = document.getElementById(toElementId);
+    fromElement.removeChild(block);
+    toElement.appendChild(block);
+  }
+
+  // Simulate the call stack processing
+  const startBlock = addBlock('callStack', 'console.log("Start")');
+  setTimeout(() => { startBlock.className += ' hidden'; }, 1000); // Hide after showing
+
+  // Simulate the setTimeout going to Web APIs
+  setTimeout(() => {
+    const timeoutBlock = addBlock('webAPIs', 'setTimeout(callback, 3000)');
+    setTimeout(() => {
+      moveBlock(timeoutBlock, 'webAPIs', 'taskQueue'); // Move to task queue after delay
+      setTimeout(() => {
+        moveBlock(timeoutBlock, 'taskQueue', 'callStack'); // Move to call stack when empty
+        setTimeout(() => {
+          timeoutBlock.textContent = 'console.log("Timeout 1")';
+          setTimeout(() => { timeoutBlock.className += ' hidden'; }, 1000); // Hide after showing
+        }, 500);
+      }, 1000);
+    }, 3000); // Matches the timeout duration
+  }, 1500);
+
+  // Simulate the end log
+  setTimeout(() => {
+    const endBlock = addBlock('callStack', 'console.log("End")');
+    setTimeout(() => { endBlock.className += ' hidden'; }, 1000); // Hide after showing
+  }, 2500);
+</script>
+
+</body>
+</html>
