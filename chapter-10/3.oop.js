@@ -16,7 +16,7 @@ class Herbivore extends Animal{
     constructor(name) {
         super(name); // this is required to call the parent constructor
         // super is mandatory if you want to use this in the constructor
-        this.name = name;
+        this.newProperty = 'new property';
     }
     eat() {
         console.log(`${this.name} eats plants.`);
@@ -26,7 +26,7 @@ class Herbivore extends Animal{
 class Carnivore extends Animal{
     constructor(name) {
         super(name);
-        this.name = name;
+        this.newProperty = 'new property';
     }
     eat() {
         console.log(`${this.name} eats meat.`);
