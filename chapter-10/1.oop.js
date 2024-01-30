@@ -33,7 +33,7 @@
     }
 
     const lion = new Animal("Lion", "Brown");
-    console.log(xyz);
+    console.log(lion);
     lion.eat(); // we use the dot operator to access the attributes as well as the functions
     lion.sleep();
 
