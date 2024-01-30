@@ -38,6 +38,6 @@
     lion.sleep();
 
     const tiger = new Animal("Tiger", "White");
-    console.log(abc);
+    console.log(tiger);
     tiger.eat();
     tiger.sleep();
