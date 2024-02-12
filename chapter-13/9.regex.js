@@ -1,6 +1,5 @@
 /**
- * [a-z0-9]
- * The above regular expression means one of a-z or one of 0-9
+ * \w - any word character (a-z, A-Z, 0-9, _)
  */
 const pattern = /\w+@gmail\.com/g;
 const email = "manas@gmail.com";
