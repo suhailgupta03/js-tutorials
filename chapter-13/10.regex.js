@@ -23,3 +23,13 @@ console.log(email2.match(pattern))
 console.log(email3.match(pattern))
 console.log(email4.match(pattern))
 console.log(email5.match(pattern));
+
+
+// twitter\.(com|in|net|app)
+
+// twitter.com -> passes
+// twitter.in -> passes
+// twitter.net -> passes
+// twitter.app -> passes
+// twitter.xyz -> fails match
+// twitter.co -> fails match
