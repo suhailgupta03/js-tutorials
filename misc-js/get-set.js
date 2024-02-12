@@ -18,9 +18,11 @@ class Student {
 
 const pranshu = new Student("Pranshu");
 pranshu.printName();
-pranshu._name = "Pranshu Jain";  // setting the name directly (name: key)
+pranshu._name = "Pranshu Jain";  // setting the name directly (name: key) not recommended 
+// because the name should be private
 pranshu.name = "Pranshu Jain"; // setting the name using the setter
 
 pranshu.printName();
 console.log(pranshu._name) // accessing the name directly (name: key)
+// not recommended because the name should be private
 console.log(pranshu.name) // accessing the name using the getter
