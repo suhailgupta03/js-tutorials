@@ -4,9 +4,10 @@
  */
 const pattern = /[a-z0-9\_]+@gmail\.com/g;
 const email = "manas@gmail.com";
-const email1 = "shreya99@hotmail.com"
 
 const result = email.match(pattern);
 console.log(result);
+
+const email1 = "shreya99@hotmail.com"
 const result1 = email1.match(pattern);
 console.log(result1);
