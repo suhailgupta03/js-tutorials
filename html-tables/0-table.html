@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Table with Default Borders</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #af2f2f;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <!-- Column Heading-->
+          <th>ID</th>
+          <!-- Column Heading-->
+          <th>Country</th>
+          <!-- Column Heading-->
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Mary</td>
+          <!-- td represents a cell value  -->
+          <td>1</td>
+          <!-- It is corresponding to the header defined above-->
+          <td>USA</td>
+        </tr>
+
+        <tr>
+          <td>John</td>
+          <td>2</td>
+          <td>Canada</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
