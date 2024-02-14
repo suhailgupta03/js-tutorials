@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Types Example</title>
+  <style>
+    /* CSS styles for grid layout */
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 10px;
+    }
+    
+    .grid-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    
+    pre {
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h2>Input Types and HTML Representation</h2>
+  
+  <div class="grid-container">
+    <div class="grid-item">
+      <label for="text-input">Text Input:</label>
+    </div>
+    <div class="grid-item">
+      <input type="text" id="text-input" name="text-input">
+      <pre>&lt;input type="text" id="text-input" name="text-input"&gt;</pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="password-input">Password Input:</label>
+    </div>
+    <div class="grid-item">
+      <input type="password" id="password-input" name="password-input">
+      <pre>&lt;input type="password" id="password-input" name="password-input"&gt;</pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="textarea-input">Textarea:</label>
+    </div>
+    <div class="grid-item">
+      <textarea id="textarea-input" name="textarea-input"></textarea>
+      <pre>&lt;textarea id="textarea-input" name="textarea-input"></textarea&gt;</pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="checkbox-input">Checkbox:</label>
+    </div>
+    <div class="grid-item">
+      <input type="checkbox" id="checkbox-input" name="checkbox-input">
+      <pre>&lt;input type="checkbox" id="checkbox-input" name="checkbox-input"&gt;</pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="radio-input">Radio Buttons:</label>
+    </div>
+    <div class="grid-item">
+      <input type="radio" id="radio-input-1" name="radio-input" value="option1">
+      <label for="radio-input-1">Option 1</label>
+      <br>
+      <input type="radio" id="radio-input-2" name="radio-input" value="option2">
+      <label for="radio-input-2">Option 2</label>
+      <pre>
+&lt;input type="radio" id="radio-input-1" name="radio-input" value="option1"&gt;
+&lt;label for="radio-input-1"&gt;Option 1&lt;/label&gt;
+<br>
+&lt;input type="radio" id="radio-input-2" name="radio-input" value="option2"&gt;
+&lt;label for="radio-input-2">Option 2&lt;/labe&gt;
+      </pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="dropdown-input">Dropdown:</label>
+    </div>
+    <div class="grid-item">
+      <select id="dropdown-input" name="dropdown-input">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+      <pre>
+&lt;select id="dropdown-input" name="dropdown-input"&gt;
+  &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="option3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;
+      </pre>
+    </div>
+    
+    <div class="grid-item">
+      <label for="button-input">Button:</label>
+    </div>
+    <div class="grid-item">
+      <button type="button" id="button-input">Click Me</button>
+      <pre>&lt;button type="button" id="button-input">Click Me&lt;/button&gt;</pre>
+    </div>
+  </div>
+</body>
+</html>
+``
