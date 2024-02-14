@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+    }
+    
+    .container h2 {
+      text-align: center;
+    }
+    
+    .container form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container label {
+      margin-bottom: 10px;
+    }
+    
+    .container input[type="text"],
+    .container input[type="password"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .container input[type="submit"] {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    
+    .container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <h2>Login Form</h2>
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        
+        <input type="submit" value="Login">
+      </form>
+      <div id="output"></div>
+    </div>
+  
+    <script>
+      // JavaScript code to handle form submission
+      document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Get input values
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        
+        // Display the values
+        var output = document.getElementById("output");
+        output.innerHTML = "Username: " + username + "<br>Password: " + password;
+      });
+    </script>
+  </body>
+</html>
