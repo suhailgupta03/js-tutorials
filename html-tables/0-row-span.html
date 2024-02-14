@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Row Span</title>
+        <style>
+            table {
+              border-collapse: collapse;
+            }
+      
+            th,
+            td {
+              border: 1px solid #af2f2f;
+              padding: 8px;
+            }
+          </style>
+    </head>
+
+    <body>
+
+        <h3>Without rowspan</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Athlete Name</th>
+                    <th>Seconds Taken</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>68</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>59</td>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>Doer</td>
+                    <td>45</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>With rowspan</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Athlete Name</th>
+                    <th>Seconds Taken</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td rowspan="4">John</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <!-- <td>John</td> -->
+                    <td>68</td>
+                </tr>
+                <tr>
+                    <!-- <td>John</td> -->
+                    <td>59</td>
+                </tr>
+                <tr>
+                    <!-- <td>John</td> -->
+                    <td>62</td>
+                </tr>
+                <tr>
+                    <td>Doer</td>
+                    <td>45</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
