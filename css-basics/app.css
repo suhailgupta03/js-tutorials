@@ -1,0 +1,8 @@
+div p {
+    color: red;
+    border: 3px dotted green;
+    padding: 10px;
+    margin: 10px;
+    font-weight: 500;
+    font-size: medium;
+}
