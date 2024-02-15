@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table Example</title>
+  <style>
+    /* CSS styles for table layout */
+    table {
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Table Example</h2>
+  
+  <h3>Table with colspan</h3>
+  <table>
+    <tr>
+      <th colspan="2">Employee Details</th>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>John Doe</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td colspan="2">Address: 123 Main St, City, Country</td>
+    </tr>
+  </table>
+  
+  <h3>Table with rowspan</h3>
+  <table>
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <tr>
+      <td rowspan="2">Product A</td>
+      <td>$10</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>$15</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Product B</td>
+      <td>$20</td>
+      <td>2</td>
+    </tr>
+  </table>
+</body>
+</html>
