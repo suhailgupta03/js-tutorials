@@ -1,0 +1,36 @@
+<style>
+  .square {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    background-color: lightcoral;
+    position: absolute;
+    bottom: 20px; /* 20px from the bottom */
+    right: 20px; /* 20px from the right */
+    border-radius: 50%;
+  }
+
+  .chat {
+    width: 100px;
+    height: 100px;
+    background-color: lightgreen;
+    position: fixed;
+    bottom: 20px; /* 20px from the bottom */
+    right: 20px; /* 20px from the right */
+  }
+</style>
+<div class="square">
+  <div class="circle"></div>
+
+  <div class="chat"></div>
+</div>
+
+<div class="te">Absolute - Element is removed from the normal document flow and positioned relative to its closest positioned ancestor.</div>
+<div class="x">Fixed - Element is removed from the normal document flow and remains fixed relative to the viewport.</div>
+
