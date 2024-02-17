@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin Box Model Demo</title>
+<style>
+    .container {
+        border: 2px solid black;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .inner-box {
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 20px; /* Margin affects the space around the inner box */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="inner-box"></div>
+    <p id="marginExplanation">Margin adds space around the inner box within the container. It does not contribute to the overall width and height of the container. The content width, padding, and border contribute to the overall dimensions of the container.</p>
+</div>
+<button onclick="updateMargin()">Update Margin</button>
+
+<script>
+    function updateMargin() {
+        var innerBox = document.querySelector('.inner-box');
+        var newMargin = Math.floor(Math.random() * 50) + 'px';
+        innerBox.style.margin = newMargin;
+        document.getElementById('marginExplanation').innerText = "Margin adds space around the inner box within the container. Current margin: " + newMargin;
+    }
+</script>
+</body>
