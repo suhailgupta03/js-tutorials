@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Padding Box Model Demo</title>
+<style>
+    .container {
+        border: 2px solid black;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .inner-box {
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px; /* Padding affects the space inside the inner box */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="inner-box"></div>
+    <p id="paddingExplanation">Padding adds space inside the inner box. It contributes to the overall dimensions of the inner box.</p>
+</div>
+<button onclick="updatePadding('left')">Add Left Padding</button>
+<!-- <button onclick="updatePadding('right')">Add Right Padding</button> -->
+
+<script>
+    function updatePadding(direction) {
+        var innerBox = document.querySelector('.inner-box');
+        var currentPadding = parseInt(innerBox.style.paddingLeft) || 0;
+        var newPadding = currentPadding + 10;
+        
+        if (direction === 'left') {
+            innerBox.style.paddingLeft = newPadding + 'px';
+        } else if (direction === 'right') {
+            innerBox.style.paddingRight = newPadding + 'px';
+        }
+
+        var totalWidth = innerBox.offsetWidth + 2 * newPadding;
+        var totalHeight = innerBox.offsetHeight + 2 * newPadding;
+        document.getElementById('paddingExplanation').innerText = "Padding adds space inside the inner box. Current total width: " + totalWidth + "px, Current total height: " + totalHeight + "px";
+    }
+</script>
+</body>
+</html>
