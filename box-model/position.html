@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positioning Example</title>
+<style>
+    .parent {
+        border: 2px solid black;
+        padding: 20px;
+        width: 600px;
+        height: 400px;
+        position: relative;
+    }
+    .child-static {
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+    }
+    .child-relative {
+        background-color: lightcoral;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: 50px;
+        left: 50px;
+    }
+    .child-absolute {
+        background-color: lightgreen;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    .child-fixed {
+        background-color: lightsalmon;
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+    .child-sticky {
+        background-color: lightseagreen;
+        width: 100px;
+        height: 100px;
+        position: sticky;
+        top: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="parent">
+    <div class="child-static">Static</div>
+    <div class="child-relative">Relative</div>
+    <div class="child-absolute">Absolute</div>
+    <div class="child-fixed">Fixed</div>
+    <div class="child-sticky">Sticky</div>
+</div>
+
+<div class="p">
+    <div class="c">Static - Default positioning behavior. Element is positioned according to the normal flow of the document.</div>
+    <div class="ve">Relative - Element is positioned relative to its normal position in the document flow.</div>
+    <div class="te">Absolute - Element is removed from the normal document flow and positioned relative to its closest positioned ancestor.</div>
+    <div class="x">Fixed - Element is removed from the normal document flow and remains fixed relative to the viewport.</div>
+    <div class="y">Sticky - Element toggles between relative and fixed positioning based on the user's scroll position.</div>
+</div>
+</body>
+</html>

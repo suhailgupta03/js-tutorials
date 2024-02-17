@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inner Container Customization</title>
+<style>
+    .container {
+        border: 2px solid black;
+        padding: 20px;
+        width: 400px;
+        height: 400px;
+        position: relative;
+    }
+    .inner-box {
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 2px solid black;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="inner-box"></div>
+</div>
+<button onclick="modifyHeight(1)">Increase Height</button>
+<button onclick="modifyWidth(1)">Increase Width</button>
+<button onclick="modifyMargin(1)">Increase Margin</button>
+<button onclick="modifyPaddingLeft(1)">Increase Padding Left</button>
+<button onclick="modifyPaddingRight(1)">Increase Padding Right</button>
+<button onclick="modifyTop(1)">Move Up</button>
+<button onclick="modifyBottom(1)">Move Down</button>
+<button onclick="modifyBorder(1)">Increase Border</button>
+
+<script>
+    function modifyHeight(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.height = (innerBox.offsetHeight + value) + 'px';
+    }
+
+    function modifyWidth(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.width = (innerBox.offsetWidth + value) + 'px';
+    }
+
+    function modifyMargin(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.margin = (parseInt(getComputedStyle(innerBox).margin) + value) + 'px';
+    }
+
+    function modifyPaddingLeft(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.paddingLeft = (parseInt(getComputedStyle(innerBox).paddingLeft) + value) + 'px';
+    }
+
+    function modifyPaddingRight(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.paddingRight = (parseInt(getComputedStyle(innerBox).paddingRight) + value) + 'px';
+    }
+
+    function modifyTop(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.top = (parseInt(getComputedStyle(innerBox).top) - value) + 'px';
+    }
+
+    function modifyBottom(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.top = (parseInt(getComputedStyle(innerBox).top) + value) + 'px';
+    }
+
+    function modifyBorder(value) {
+        var innerBox = document.querySelector('.inner-box');
+        innerBox.style.borderWidth = (parseInt(getComputedStyle(innerBox).borderWidth) + value) + 'px';
+    }
+</script>
+</body>
+</html>
