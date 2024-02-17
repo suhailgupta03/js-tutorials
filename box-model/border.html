@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Border Box Model Demo</title>
+<style>
+    .container {
+        border: 2px solid black;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+    .inner-box {
+        background-color: lightblue;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px; /* Padding affects the space inside the inner box */
+        border-left: 2px solid black; /* Only left border for the inner box */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="inner-box"></div>
+    <p id="borderExplanation">Left border adds to the overall width of the inner box.</p>
+</div>
+<button onclick="updateBorder()">Add Left Border</button>
+
+<script>
+    function updateBorder() {
+        var innerBox = document.querySelector('.inner-box');
+        var currentBorder = parseInt(innerBox.style.borderLeftWidth) || 2;
+        var newBorder = currentBorder + 2;
+        
+        innerBox.style.borderLeftWidth = newBorder + 'px';
+
+        // var totalWidth = innerBox.offsetWidth + newBorder - currentBorder;
+        // innerBox.style.width = totalWidth + 'px';
+
+        document.getElementById('borderExplanation').innerText = "Left border adds to the overall width of the inner box. Current left border width: " + newBorder + "px, Current total width: " + totalWidth + "px";
+    }
+</script>
+</body>
+</html>
