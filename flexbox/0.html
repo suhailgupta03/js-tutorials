@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Example</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <pre>
+        Flexbox is like a set of rules for arranging things in a row or a column. 
+        It helps you make layouts that can adjust and look good on different screen sizes. With Flexbox, 
+        you can easily control how things are spaced out, aligned, and resized within a container on a webpage.
+        
+        Flexbox alone can make HTML responsive by allowing elements to dynamically adjust their size, position, 
+        and alignment within a container based on available space. Here's how it works simply:
+    
+        - Flexbox provides properties that control how elements grow, shrink, and align.
+        - Elements can stack vertically or horizontally depending on the flex direction.
+        - Flexbox allows for easy centering of elements both horizontally and vertically.
+        - By using Flexbox properties, developers can create layouts that adapt to different screen sizes 
+        without needing media queries or fixed widths.
+        
+        This flexibility makes it easier to build responsive designs that look good on various devices.
+    </pre>
+    <br />
+    <br />
+    <br />
+    <pre>
+        The display: flex; property on the container creates a flex container, allowing the boxes to be flex items.
+        
+        - The justify-content: space-around; property evenly spaces the boxes with space around them, 
+        adjusting automatically based on the container's width.
+
+        - As the screen size changes, the flex layout dynamically adjusts the spacing between the 
+        boxes while maintaining their alignment, making the layout responsive to different screen sizes.
+    </pre>
+  </body>
+</html>
