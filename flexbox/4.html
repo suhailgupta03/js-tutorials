@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout with Bootstrap 5 Flexbox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- https://getbootstrap.com/docs/5.3/utilities/flex/ -->
+    <!-- d-flex instructs to create a container with a FLEX layout -->
+    <!-- flex-row instructs to put the direct children of div in a row layout-->
+    <div class="d-flex flex-row">
+        <div class="me-2 p-2">
+            <div class="d-flex flex-column">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Dr._Seuss_WikiWorld.png" class="img-thumbnail" height="350" width="350" />
+                <p>This image is copied from wikipedia</p>
+                <p>This is some demonstration</p>
+            </div>
+        </div>
+        <div class="me-2 p-2">
+            <div class="d-flex flex-column align-items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Animhorse.gif" class="img-thumbnail" height="350" width="350"/>
+                <p>This image is copied from wikipedia</p>
+                <p>This is some demonstration</p>
+            </div>
+        </div>
+        <div class="me-2 p-2">
+            <div class="d-flex flex-column">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Punch_Davy_Jones%27s_Locker.png/340px-Punch_Davy_Jones%27s_Locker.png" class="img-thumbnail" height="350" width="350"/>
+                <p>This image is copied from wikipedia</p>
+                <p>This is some demonstration</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-row">
+        <div class="me-2 p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Dr._Seuss_WikiWorld.png" class="img-thumbnail" height="350" width="350" />
+        </div>
+        <div class="me-2 p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Animhorse.gif" class="img-thumbnail" height="350" width="350"/>
+        </div>
+        <div class="me-2 p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Punch_Davy_Jones%27s_Locker.png/340px-Punch_Davy_Jones%27s_Locker.png" class="img-thumbnail" height="350" width="350" />
+        </div>
+    </div>
+</body>
+
+</html>
