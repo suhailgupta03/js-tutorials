@@ -1,0 +1,30 @@
+<html>
+  <head> </head>
+
+  <body>
+    <div id="foobar" class="foo">
+      This is a sample text to understand DOM (or document object model)
+    </div>
+
+    <div class="foo">This is another sample text to understand DOM</div>
+
+    <div class="foo">This is another sample text to understand DOM</div>
+
+    <div class="foo">This is another sample text to understand DOM</div>
+
+    <br />
+    <script>
+      const elems = document.getElementsByClassName("foo");
+      for(let i = 0; i < elems.length; i++) {
+        if(i % 2 == 0) {
+            elems[i].style.fontSize = "40px";
+            elems[i].style.backgroundColor = "green";
+        }else {
+            elems[i].style.fontSize = "20px";
+            elems[i].style.backgroundColor = "yellow";
+        }
+        elems[i].style.padding = "10px";
+      }
+    </script>
+  </body>
+</html>
