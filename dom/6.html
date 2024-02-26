@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <!--   https://developer.mozilla.org/en-US/docs/Web/CSS/transition -->
+    <style>
+      #box {
+        height: 400px;
+        width: 400px;
+        margin-right: 20px;
+        margin-top: 30px;
+        margin-left: 20px;
+        background-color: aqua;
+      }
+
+      #box2 {
+        height: 400px;
+        width: 400px;
+        margin-right: 20px;
+        margin-top: 30px;
+        margin-left: 20px;
+        background-color: green;
+        transition: margin-left 3s ease-in;
+      }
+
+      #box3 {
+        height: 400px;
+        width: 400px;
+        margin-right: 20px;
+        margin-top: 30px;
+        margin-left: 20px;
+        background-color: rgb(139, 21, 21);
+        transition: border-radius 1.5s ease-in;
+      }
+
+      .box-margin {
+        margin-left: 500px !important;
+      }
+
+      .circle {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="box"></div>
+    <br />
+    <div id="box2"></div>
+    <br />
+    <div id="box3"></div>
+
+    <script>
+        const elem = document.getElementById("box");
+        elem.addEventListener("mouseover", function() {
+            elem.style.backgroundColor = "pink";
+            elem.style.borderRadius = "50%";
+        });
+
+        elem.addEventListener("mouseout", function() {
+            elem.style.backgroundColor = "aqua";
+            elem.style.borderRadius = "0";
+        });
+
+        const elem2 = document.getElementById("box2");
+        elem2.addEventListener("mouseover", function() {
+            elem2.classList.add("box-margin")
+        })
+
+        const elem3 = document.getElementById("box3");
+        elem3.addEventListener("mouseover", function() {
+            elem3.classList.add("circle")
+        })
+    </script>
+  </body>
+</html>
