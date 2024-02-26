@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Event Bubbling Demo</title>
+<style>
+  .container {
+    padding: 20px;
+    background-color: lightblue;
+  }
+  .sub-container {
+    padding: 20px;
+    background-color: lightcoral;
+  }
+  .inner-item {
+    padding: 20px;
+    background-color: lightgreen;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="container">
+  Click Me (Container)
+  <div class="sub-container" id="subContainer">
+    Click Me (Sub-Container)
+    <button class="inner-item" id="innerItem">Click Me (Button)</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('container').addEventListener('click', function() {
+    alert('Container clicked - Event Bubbling');
+  });
+
+  document.getElementById('subContainer').addEventListener('click', function(event) {
+    alert('Sub-Container clicked - Event Bubbling');
+  });
+
+  document.getElementById('innerItem').addEventListener('click', function(event) {
+    alert('Button clicked - Event starts here');
+    // Uncomment the line below to stop event bubbling
+    // event.stopPropagation();
+  });
+</script>
+
+</body>
+</html>
