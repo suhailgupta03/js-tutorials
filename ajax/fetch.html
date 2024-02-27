@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    </head>
+    <body>
+
+        <div class="container" id="root-container">
+            <div class="position-absolute top-50 start-50 fs-2 text-info" id="loader">Loading data...</div>
+            <div class="d-flex flex-column mt-5" id="posts-container">
+                <!-- This container will have multiple posts -->
+            </div>
+        </div>
+
+        <script>
+            const rootContainer = document.getElementById("root-container");
+            const postsContainer = document.getElementById("posts-container");
+            fetch("https://jsonplaceholder.typicode.com/posts")
+                .then(r => r.json())
+                .then(data => {
+                    console.log("DATA DOWNLOADED:");
+                    // [
+                    //     {
+                    //         body: "..",
+                    //         id: 1,
+                    //         title: "..",
+                    //         userId: 2
+                    //     }
+                    // ]
+                    for(const item of data) {
+                        const elem = document.createElement("div");
+                        elem.classList.add("m-1","bg-info", "p-1", "border");
+                        const {body, id} = item;
+                        elem.innerText = body;
+                        postsContainer.append(elem);
+                    }
+                    const loader = document.getElementById("loader");
+                    rootContainer.removeChild(loader)
+                })
+                .catch(err => console.log(err));
+        </script>
+    </body>
+</html>
