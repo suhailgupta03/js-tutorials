@@ -1,23 +1,32 @@
 import {
-  EmployeeDetails
-} from "./my-paragraph"
+  ToDoText
+} from "./todo-text"
 
+function loadTodoListFromServer() {
+  return [
+    "Have breakfast at 9:00 AM",
+    "Leave for office by 10:00 AM",
+    "Have lunch at 2:00 PM",
+    "Start back by 6:00 PM",
+    "Have dinner by 9:00 PM",
+    "Sleep by 11:00 PM"
+  ]
+}
 // The above syntax IMPORTS the functions EXPORTED inside "my-paragraph.js"
-
 function MyToDoApp() {
+  const data = loadTodoListFromServer();
+  const todoList = [];
+  for(let i=0;i<data.length;i++) {
+    todoList.push(<ToDoText text={data[i]} />)
+  }
+  // todoList is a list of all the todo-components
   return (
-    <div>
-      <EmployeeDetails city="delhi" name="arjun" age="20" /> 
-      {
-        /**
-         * The above is a way to call a function that returns HTML
-         * The above syntax is again JSX and this means
-         * that we want to RENDER HTML (a.k.a JSX) being 
-         * returned from MyCustomParagraph (component / function)
-         */
-      }
+    <div className="container bg-black">
+      {todoList}
       <br />
-     <EmployeeDetails name="raj" city="nagpur" age="23" />
+      <br />
+      <ToDoText text={data[0]} />
+      <ToDoText text={data[1]} />
     </div>
   )
 }
