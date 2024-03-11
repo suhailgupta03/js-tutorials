@@ -1,25 +1,33 @@
 import { UsernameInput } from "./UsernameInput";
 import { LoadComments } from "./load-comments";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { MediaDescription } from "./media-description";
+import React from "react";
+import { MediaSource } from "./media-source";
+import { MediaLoader } from "./media";
 
-function App() {
-  return (
-    {
-      /**
-       * https://legacy.reactjs.org/docs/legacy-context.html
-       */
-    }
-    <BrowserRouter>
-      <Routes>
-        <Route path="/load-comments" Component={LoadComments} />
-        <Route path="/password-validator" Component={UsernameInput} />
-      </Routes>
-    </BrowserRouter>
-  );
+class SampleVideo extends React.Component {
+
+  render() {
+    return <video width={450} height={450} controls autoPlay>
+    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </source>
+  </video>
+  }
 }
+export default class App extends React.Component {
 
-export default App;
-// Using the default syntax here, because this file
-// will never have any other function
-// so, I want to clearly specify that this will be the only
-// function that can be EXPORTED from this file
+  render() {
+    return (
+      <div className="container mt-3">
+        <BrowserRouter>
+          <Link to="/load-media">Load Media</Link>
+          <Routes>
+            <Route path="/load-media" Component={MediaLoader} ></Route>
+            <Route path="/video" Component={SampleVideo} ></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
