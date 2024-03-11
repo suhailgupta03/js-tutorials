@@ -1,15 +1,5 @@
 import React from "react";
 
-
-// <Test name = "john" age=20 />
-// function Test(props) {
-//     const {name, age} = props;
-//     return <div>
-//         <p>{name}</p>
-//         <p>{age}</p>
-//     </div>
-// }
-
 // class based component:
 // component that is rendered using a CLASS
 export class UsernameInput extends React.Component { // UsernameInput is a React.Component
@@ -30,6 +20,15 @@ export class UsernameInput extends React.Component { // UsernameInput is a React
             passwordLength: 0,
             defaultClassString: "bg-warning rounded mt-3 p-3 fs-5"
         }
+    }
+
+    // componentDidMount is provided by React
+    // This method is called 'ONCE' after every RENDER
+    componentDidMount() {
+        console.log("INSIDE COMPONENT DID MOUNT");
+        // this is the place to make your AJAX calls (fetch)
+        // so if you want to load data from the server, this
+        // is the method where you must be adding the logic
     }
 
     myCustomHandler = (event) => {
@@ -63,6 +62,7 @@ export class UsernameInput extends React.Component { // UsernameInput is a React
     // returning the data that will be RENDERED by this
     // component
     render() {
+        console.log("INSIDE RENDER");
         return <div className="mt-5 d-flex flex-column border rounded p-3 bg-light">
             <p className="bg-info p-1 fs-5 rounded mb-5">Password Validator</p>
             <input 
