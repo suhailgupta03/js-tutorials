@@ -4,6 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
+    {
+      /**
+       * https://legacy.reactjs.org/docs/legacy-context.html
+       */
+    }
     <BrowserRouter>
       <Routes>
         <Route path="/load-comments" Component={LoadComments} />
