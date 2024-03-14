@@ -13,7 +13,7 @@ export function Counter() {
     setTotalClicks(updatedClicks);
   };
 
-  useEffect(() => {
+  useEffect(() => { // fired when the component has been rendered
     // exactly same as componentDidMount
     console.log("My component was rendered");
     fetch("https://jsonplaceholder.typicode.com/comments")
@@ -22,7 +22,26 @@ export function Counter() {
         setComments(d); // updating the state
         // once we have the data from the server
       });
-  });
+
+      return () => { // OPTIONAL! [component will unmount]
+        /**
+         * The function that you are returning from useEffect
+         * will be triggered only when the component unmounts
+         * 
+         * This is also the part where all the cleaning work can be done
+         */
+        console.log("Component unmounted")
+      }
+  }, []); // empty array means that we want to render the component just once
+
+  
+  useEffect(() => { // component did update
+    console.log("....")
+  }, [comments]) // fired only when comments get updated
+
+  useEffect(() => { // component did update
+    console.log("....")
+  }, [totalClicks]) // fired only when total click get updated
 
   return (
     <div className="m-2">
