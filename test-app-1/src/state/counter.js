@@ -38,5 +38,28 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-// Connect Redux to React
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+const storeConnection = connect(mapStateToProps, mapDispatchToProps);
+const newComponent = storeConnection(Counter);
+export default newComponent;
+
+// // Connect Redux to React
+// export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+// the call to connection function
+// returns a new component
+// that has a binding with REDUX store
+// which means that this new component
+// now will have access to all the state changes
+// and all those state changes will be accessible 
+// as props to the new component
+/**
+ * connect({
+ *   stateA: ..,
+ *   stateB: ..,
+ * }, {
+ *  fnA: ..,
+ *  fnB : ..,
+ * })
+ * 
+ * newComponent = storeConnection(Component)
+ */
