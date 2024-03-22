@@ -1,6 +1,6 @@
 import React from "react";
 
-export class Component1 extends React.Component {
+class Component1 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,6 +15,8 @@ export class Component1 extends React.Component {
             userInput: event.target.value
         }); // It is maintaining its own state
 
+
+        
         // It is calling the function that is passed to it
         // as a prop (this is basically a callback)
         // onUserType is a function that is passed 
@@ -30,3 +32,6 @@ export class Component1 extends React.Component {
         </div>
     }
 }
+
+
+export default Component1;
