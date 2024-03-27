@@ -6,10 +6,10 @@ import { TestComponent } from "./test-component";
 
 export default function App() {
   return (
-    <NotFound>
-      <TestComponent />
-    </NotFound>
-    // <ParentComponent />
+    // <NotFound>
+    //   <TestComponent />
+    // </NotFound>
+    <ParentComponent />
     // <ErrorBoundary>
     //   <UserProfile />
     // </ErrorBoundary>
