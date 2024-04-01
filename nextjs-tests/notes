@@ -1,0 +1,6 @@
+src
+    app
+        page.js : ENTRY POINT FOR THE APPLICATION
+        layout.js
+        globals.css
+        page.module.css

@@ -1,0 +1,8 @@
+.primary-btn {
+    color: #c2a0a0;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
