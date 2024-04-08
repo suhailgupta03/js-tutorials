@@ -1,0 +1,7 @@
+.rounded {
+    border-radius: 50px;
+}
+
+.border-primary {
+    border: 1px solid blueviolet;
+}
