@@ -1,9 +1,10 @@
-import { LoadComments } from "@/components/button";
+// // @ -> src/database
+// export const revalidate = 0; // 0 second
 
-export default function MyFooHomBar() {
-  return (
-    <>
-      <LoadComments />
-    </>
-  );
+import { LoginForm } from "@/components/login-form";
+
+export default async function MyFooHomBar() {
+  return <div>
+    <LoginForm />
+  </div>
 }
