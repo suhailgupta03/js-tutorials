@@ -3,3 +3,9 @@ function greet() {
 }
 
 greet(); // 'Hello, World!'
+
+function test() {
+    console.log('test');
+}
+
+test(); // 'test'
